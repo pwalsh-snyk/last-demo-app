@@ -248,7 +248,7 @@ app.use('/support/logs/:file', logFileServer())
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.use(express.static(path.join(__dirname, '/frontend/dist/frontend')))
-app.use(cookieParser('kekse'))
+
 
 /* Configure and enable backend-side i18n */
 i18n.configure({
