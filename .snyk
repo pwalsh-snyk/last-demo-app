@@ -1,0 +1,26 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.19.0
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-JS-LODASH-590103:
+    - '*': null
+    - reason: ignore
+    - expires: '2021-07-02T19:06:51.364Z'
+  'npm:base64url:20180511':
+    - '*': null
+    - reason: ignore1
+    - expires: '2021-07-02T19:06:58.450Z'
+  SNYK-JS-ENGINEIO-1056749:
+    - '*': null
+    - reason: ignoring the issue
+    - expires: '2021-07-13T19:15:03.493Z'
+  SNYK-JS-XMLHTTPREQUESTSSL-1255647:
+    - '*': null
+    - reason: 'i am okay with it '
+    - expires: undefined
+  'npm:underscore.string:20170908':
+    - '*':
+        reason: No drect update available
+        expires: 2021-09-01T00:00:00.000Z
+        created: 2021-08-20T17:40:02.555Z
+patch: {}
