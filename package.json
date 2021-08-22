@@ -155,15 +155,16 @@
     "sequelize": "^5.22.3",
     "sequelize-noupdate-attributes": "^1.0.0",
     "serve-index": "^1.9.1",
+    "snyk-broker": "^4.112.0",
     "socket.io": "^2.3.0",
     "sqlite3": "^5.0.0",
     "svg-captcha": "^1.4.0",
     "swagger-ui-express": "^4.1.4",
+    "tinymce": "4.1.0",
     "unzipper": "0.9.15",
     "winston": "^3.3.3",
     "yaml-schema-validator": "^1.2.2",
-    "z85": "^0.0.2",
-    "tinymce": "4.1.0"
+    "z85": "^0.0.2"
   },
   "devDependencies": {
     "chai": "^4.2.0",
