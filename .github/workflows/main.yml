@@ -16,14 +16,15 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: snyk/actions@0.3.0
-
-      # Runs a single command using the runners shell
+      - uses: actions/checkout@master
+      - uses: snyk/actions/setup@master
+      - uses: snyk/actions/node@master 
       - name: Snyk Monitor
+        env: 
+           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with: 
          command: test
          args: --all-projects
          continue-on-error: true
          json: snyk.json
-         env: 
-           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+         
