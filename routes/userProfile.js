@@ -11,7 +11,7 @@ const challenges = require('../data/datacache').challenges
 const pug = require('pug')
 const config = require('config')
 const themes = require('../views/themes/themes').themes
-//test
+//test1
 module.exports = function getUserProfile () {
   return (req, res, next) => {
     fs.readFile('views/userProfile.pug', function (err, buf) {
