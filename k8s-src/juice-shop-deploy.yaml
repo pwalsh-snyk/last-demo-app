@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: juice-shop
-        image: clintonherget/snyk-juice-shop
-        imagePullPolicy: IfNotPresent
+        image: purpledobie/snyk-juice-shop
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
         securityContext:
