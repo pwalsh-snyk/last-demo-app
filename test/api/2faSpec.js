@@ -53,8 +53,7 @@ async function register ({ email, password, totpSecret }) {
       throw new Error(`Failed to register '${email}'`)
     })
 
-  if (totpSecret) {
-    const { token } = await login({ email, password })
+
 
     await frisby.post(
       REST_URL + '/2fa/setup',
