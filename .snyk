@@ -1,0 +1,10 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.0
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-CC-K8S-5:
+    - 'k8s-src/juice-shop-deploy.yaml > [DocId: 0] > input > spec > template > spec > containers[juice-shop] > resources > limits > cpu':
+        reason: None Given
+        expires: 2022-05-19T14:58:37.116Z
+        created: 2022-04-19T14:58:37.120Z
+patch: {}
