@@ -97,7 +97,7 @@
     ]
   },
   "dependencies": {
-    "adm-zip": "0.4.7",
+    "adm-zip": "0.4.16",
     "body-parser": "^1.19.0",
     "check-dependencies": "^1.1.0",
     "clarinet": "^0.12.4",
@@ -160,6 +160,7 @@
     "sqlite3": "^5.0.0",
     "svg-captcha": "^1.4.0",
     "swagger-ui-express": "^4.1.4",
+    "typeorm": "0.2.24",
     "unzipper": "0.9.15",
     "winston": "^3.3.3",
     "yaml-schema-validator": "^1.2.2",
