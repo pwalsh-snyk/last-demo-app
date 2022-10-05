@@ -35,7 +35,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 # # Run static code analysis
-# - name: Snyk code test
+- name: Snyk code test
 uses: snyk/actions/node@master
 env:
 SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
