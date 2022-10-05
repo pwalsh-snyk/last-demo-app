@@ -1,26 +1,13 @@
-name: SnykCodeAction
-
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "master" branch
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+name: Example workflow for Node using Snyk
+on: push
 jobs:
   security:
-      # The type of runner that the job will run on
     runs-on: ubuntu-latest
-      # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - uses: actions/checkout@master
-      # # Run static code analysis
-    - name: Snyk code test
-    uses: snyk/actions/node@master
-    env:
-      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-    with:
-      args: -d --severity-threshold=critical
-      command: code test
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
