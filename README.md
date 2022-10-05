@@ -1,3 +1,6 @@
+This fork also has a github action with a snykCode (sev=high) security scan
+
+
 **Snyk Instructions**
 1. Fork this repo to your own Github account
 2. Import your fork into Snyk via Git
