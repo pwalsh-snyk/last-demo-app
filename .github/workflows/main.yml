@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
       # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - uses: actions/checkout@master
       # # Run static code analysis
     - name: Snyk code test
     uses: snyk/actions/node@master
