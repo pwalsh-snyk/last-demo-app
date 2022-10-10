@@ -52,6 +52,10 @@ out/
 assets/
 !frontend/src/assets/
 
+# Outputs
+.dccache
+snyk_output.html
+
 # Custom configuration files
 config/*.yml
 !config/addo.yml
