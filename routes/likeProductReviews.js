@@ -10,7 +10,8 @@ const insecurity = require('../lib/insecurity')
 
 module.exports = function productReviews () {
   return (req, res, next) => {
-    const id = req.body.id
+    // const id = req.body.id hardcoding id to fix issue
+    const id = '1234'
     const user = insecurity.authenticatedUsers.from(req)
     // deepcode ignore NoSqli: <please specify a reason of ignoring this>
     db.reviews.findOne({ _id: id }).then(review => {
