@@ -30,11 +30,13 @@ jobs:
 
     # Runs a single command using the runners shell     
       - name: Snyk IAC
+        continue-on-error: true 
         run: |
             npm install snyk -g
             snyk auth ${{secrets.SNYK_TOKEN}}
             snyk iac test --severity-threshold=high --project-lifecycle=development --report
       - name: Snyk Monitor
+        continue-on-error: true 
         run: |
             snyk monitor --severity-threshold=high --all-projects
 
