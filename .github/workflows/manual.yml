@@ -31,7 +31,7 @@ jobs:
         echo "Hello ${{ github.event.inputs.name }}"
         
     - name: Snyk tests
-      run: 
+      run: |
         npm install snyk
         snyk auth ${{ secrets.SNYK_TOKEN }}
         snyk test
