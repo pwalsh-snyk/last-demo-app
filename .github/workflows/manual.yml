@@ -33,9 +33,9 @@ jobs:
         run: |
             npm install snyk -g
             snyk auth ${{secrets.SNYK_TOKEN}}
-            snyk iac test --severity-threshold=high --project-lifecycle=development --report --target-name=JosanaDH/juice-shop
+            snyk iac test --severity-threshold=high --project-lifecycle=development --report --target-name=JosanaDH/juice-shop --project-name=TESTingproject
       - name: Snyk Monitor
         continue-on-error: true 
         run: |
-            snyk monitor --severity-threshold=high --all-projects  --target-name=JosanaDH/juice-shop
+            snyk monitor --severity-threshold=high --all-projects  --target-name=JosanaDH/juice-shop --project-name=TESTingproject
 
