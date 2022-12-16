@@ -33,7 +33,7 @@ jobs:
         run: |
             npm install snyk -g
             snyk auth ${{secrets.SNYK_TOKEN}}
-            snyk iac test --severity-threshold=high --project-lifecycle=development --report --remote-repo-url=https://github.com/JosanaDH/juice-shop
+            snyk iac test --severity-threshold=high --project-lifecycle=development --report --remote-repo-url=https://github.com/JosanaDH/juice-shop --target-name=JosanaDH/juice-shop
       - name: Snyk Monitor
         continue-on-error: true 
         run: |
