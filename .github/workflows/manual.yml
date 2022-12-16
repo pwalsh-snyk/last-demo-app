@@ -27,16 +27,15 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-    # Runs a single command using the runners shell     
+     
       - name: Snyk IAC
         continue-on-error: true 
         run: |
             npm install snyk -g
             snyk auth ${{secrets.SNYK_TOKEN}}
-            snyk iac test --severity-threshold=high --project-lifecycle=development --report
+            snyk iac test --severity-threshold=high --project-lifecycle=development --report --remote-repo-url=https://github.com/JosanaDH/juice-shop
       - name: Snyk Monitor
         continue-on-error: true 
         run: |
-            snyk monitor --severity-threshold=high --all-projects
+            snyk monitor --severity-threshold=high --all-projects --remote-repo-url=https://github.com/JosanaDH/juice-shop
 
