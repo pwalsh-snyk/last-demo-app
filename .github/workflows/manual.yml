@@ -25,15 +25,11 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Runs a single command using the runners shell
-    - name: Send greeting
-      run: 
-        echo "Hello ${{ github.event.inputs.name }}"
-        
+    # Runs a single command using the runners shell     
     - name: Snyk tests
       run: |
-        npm install snyk
-        snyk auth ${{ secrets.SNYK_TOKEN }}
-        snyk test
-        snyk monitor --severity-threshold=high
-        snyk iac test --severity-threshold=medium --project-lifecycle=development --report
+          npm install snyk -g
+          snyk auth ${{secrets.SNYK_TOKEN}}
+          snyk test
+          snyk monitor --severity-threshold=high
+          snyk iac test --severity-threshold=medium --project-lifecycle=development --report
