@@ -37,5 +37,5 @@ jobs:
       - name: Snyk Monitor
         continue-on-error: true 
         run: |
-            snyk monitor --severity-threshold=high --all-projects --remote-repo-url=https://github.com/JosanaDH/juice-shop
+            snyk monitor --severity-threshold=high --all-projects --remote-repo-url=https://github.com/JosanaDH/juice-shop  --target-name=JosanaDH/juice-shop
 
