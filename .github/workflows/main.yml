@@ -15,11 +15,11 @@ jobs:
           args: --severity-threshold=high --all-projects
           command: monitor
       # iac    
-#      - name: Run Snyk iac report to check for vulnerabilities
-  #      continue-on-error: true 
-#        uses: snyk/actions/node@master
-#        env:
-#          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-#        with:
-#          args: --severity-threshold=high --all-projects --report
-#          command: iac test
+      - name: Run Snyk iac report to check for vulnerabilities
+        continue-on-error: true 
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high --all-projects --report
+          command: iac test
