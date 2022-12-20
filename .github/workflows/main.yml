@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@master
       # snyk test
       - name: Run Snyk monitor to check for vulnerabilities
-    #    continue-on-error: true 
+        continue-on-error: true 
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
