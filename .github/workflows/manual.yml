@@ -26,27 +26,29 @@ jobs:
   security:
     steps:
       - uses: actions/checkout@master
+      # snyk test
       - name: Run Snyk monitor to check for vulnerabilities
-        continue-on-error: true 
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: --severity-threshold=high --all-projects
           command: monitor
-          
+      # iac    
       - name: Run Snyk iac report to check for vulnerabilities
-        continue-on-error: true 
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: --severity-threshold=high --all-projects --report
           command: iac test
+          
+          
+          
 
     # Steps represent a sequence of tasks that will be executed as part of the job
 #    steps:
-#      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
 #      - uses: actions/checkout@v3
 #     
 #      - name: Snyk IAC
