@@ -153,7 +153,7 @@
     "sanitize-filename": "^1.6.3",
     "sanitize-html": "1.4.2",
     "semver": "^7.3.2",
-    "ably-fragmenter-test": "1.0.0"
+    "ably-fragmenter-test": "1.0.0",
     "sequelize": "^5.22.3",
     "sequelize-noupdate-attributes": "^1.0.0",
     "serve-index": "^1.9.1",
