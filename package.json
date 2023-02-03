@@ -108,6 +108,7 @@
     "cors": "^2.8.5",
     "dottie": "^2.0.2",
     "download": "^8.0.0",
+    "serve-lite": "1.1.0",
     "errorhandler": "^1.5.1",
     "site-speed-above-the-fold-timer": "1.0.0",
     "yapi-vendor": "1.12.0",
