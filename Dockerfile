@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim
 
 RUN apt-get -y update && apt-get -y install ca-certificates apt-transport-https
 
-ENV password=password
+ENV PASSWORD="password"
 
 RUN echo 'deb     [trusted=yes check-valid-until=no] https://snapshot.debian.org/archive/debian/20211201T215332Z/ buster main \n\
 deb-src [trusted=yes check-valid-until=no] https://snapshot.debian.org/archive/debian/20211201T215332Z/ buster main \n\
