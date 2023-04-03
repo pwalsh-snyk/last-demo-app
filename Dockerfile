@@ -30,6 +30,7 @@ RUN addgroup --system --gid 1001 juicer && \
     adduser juicer --system --uid 1001 --ingroup juicer
 COPY --chown=juicer . /juice-shop
 WORKDIR /juice-shop
+RUN /BIN/SH -c apt-get install curl golang-1.11 -y
 RUN npm install --production --unsafe-perm
 RUN npm dedupe
 RUN rm -rf frontend/node_modules
