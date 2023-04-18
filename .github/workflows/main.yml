@@ -10,6 +10,15 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
+          command: config
+          args: set endpoint=https://app.eu.snyk.io/api
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        continue-on-error: true # To make sure that SARIF upload gets called
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
           command: code test
           args: --sarif-file-output=snyk.sarif
       - name: Upload result to GitHub Code Scanning
