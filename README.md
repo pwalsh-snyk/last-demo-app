@@ -1,5 +1,5 @@
 This fork also has a github action with a snykCode (sev=high) security scan
-
+[![Known Vulnerabilities](https://snyk.io/test/github/JosanaDH/juice-shop/badge.svg)](https://snyk.io/test/github/JosanaDH/juice-shop)
 
 **Snyk Instructions**
 1. Fork this repo to your own Github account
