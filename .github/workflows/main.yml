@@ -6,20 +6,32 @@ jobs:
      steps:
       - uses: actions/checkout@master
       # snyk test
-      - name: Run Snyk monitor to check for vulnerabilities
-        continue-on-error: true 
-        uses: snyk/actions/node@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          args: --severity-threshold=high --all-projects --target-name=JosanaDH/juice-shop
-          command: monitor
+#      - name: Run Snyk monitor to check for vulnerabilities
+#        continue-on-error: true 
+#        uses: snyk/actions/node@master
+#        env:
+#          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+#        with:
+#          args: --severity-threshold=high --all-projects --target-name=JosanaDH/juice-shop
+#          command: monitor
       # iac    
-      - name: Run Snyk iac report to check for vulnerabilities
-        continue-on-error: true 
-        uses: snyk/actions/node@master
+#      - name: Run Snyk iac report to check for vulnerabilities
+#        continue-on-error: true 
+#        uses: snyk/actions/node@master
+#        env:
+#          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+#        with:
+#          args: --severity-threshold=high --report --target-name=JosanaDH/juice-shop
+#          command: iac test
+
+
+      - name: Setup Snyk
+        uses: snyk/actions/setup@master
+
+      - name: Setup Java
+        uses: actions/setup-node@master
+
+      - name: Snyk test
+        run: snyk test
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          args: --severity-threshold=high --report --target-name=JosanaDH/juice-shop
-          command: iac test
