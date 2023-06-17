@@ -12,11 +12,17 @@ const pug = require('pug')
 const config = require('config')
 const themes = require('../views/themes/themes').themes
 
+function customSanitizer(val){
+
+ val =  val.toString();
+ return val;
+}
 module.exports = function getUserProfile () {
   return (req, res, next) => {
     fs.readFile('views/userProfile.pug', function (err, buf) {
       if (err) throw err
-      const loggedInUser = insecurity.authenticatedUsers.get(req.cookies.token)
+      var loggedInUser = insecurity.authenticatedUsers.get(req.cookies.token)
+      loggedInUser = customSanitizer(loggedInUser)
       if (loggedInUser) {
         models.User.findByPk(loggedInUser.data.id).then(user => {
           let template = buf.toString()
