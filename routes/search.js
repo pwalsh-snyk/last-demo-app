@@ -14,7 +14,7 @@ module.exports = function searchProducts () {
   return (req, res, next) => {
     let criteria = req.query.q === 'undefined' ? '' : req.query.q || ''
     criteria = (criteria.length <= 200) ? criteria : criteria.substring(0, 200)
-    criteria = customFunction(criteria); 
+    criteria = CustomFunction(criteria); 
     models.sequelize.query(`SELECT * FROM Products WHERE ((name LIKE '%${criteria}%' OR description LIKE '%${criteria}%') AND deletedAt IS NULL) ORDER BY name`)
       .then(([products]) => {
         const dataString = JSON.stringify(products)
