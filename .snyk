@@ -1,8 +1,9 @@
 custom_rules:
-  - id: 'CustomFunction defined as Sqli sanitizer'
+  - id: 'Custom Function Defined as Sanitizer'
     description: ''
     severity: 'low'
-    cwe: []
+    cwe:
+      - 'CWE-89'
     fix_analysis: ''
     rule_code: 'Taint<PRED:AnySource, CallExpression<"CustomFunction">,PRED:SqliSink>'
     languages:
