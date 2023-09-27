@@ -183,7 +183,7 @@
     "sinon": "^9.0.2",
     "sinon-chai": "^3.5.0",
     "socket.io-client": "^2.3.0",
-    "standard": "^14.3.4",
+    "standard": "^14.3.8",
     "webdriver-manager": "^12.1.7"
   },
   "engines": {
