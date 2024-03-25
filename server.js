@@ -175,6 +175,7 @@ app.use(featurePolicy({
 
 /* Remove duplicate slashes from URL which allowed bypassing subsequent filters */
 app.use((req, res, next) => {
+  //nothing
   req.url = req.url.replace(/[/]+/g, '/')
   next()
 })
