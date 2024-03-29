@@ -1,0 +1,171 @@
+name: On Pull Request
+run-name: PR #${{ github.event.number }}
+on: [workflow_dispatch]
+
+env:
+  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+  SNYK_ORG_ID: ${{ secrets.SNYK_ORG_ID }}
+
+jobs:
+
+  unit-testing:
+    permissions: write-all
+    name: Unit Testing
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        run: echo "Unit Testing"
+
+  build-container-image:
+    permissions: write-all
+    name: Build Container Image
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        run: echo "Build Container Image"
+
+  deploy-to-prod:
+    permissions: write-all
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        run: echo "Deploy to Production"
+  
+  # oss-assessment:
+  #   permissions: write-all
+  #   name: Open Source Assessment
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - 
+  #       uses: actions/checkout@v4
+  #     - 
+  #       name: Run Snyk to check for Open Source vulnerabilities
+  #       uses: snyk/actions/node@master
+  #       continue-on-error: true
+  #       with:
+  #         args: --all-projects --org=$SNYK_ORG_ID --json-file-output=oss-results.json
+  #     - 
+  #       uses: actions/setup-node@v4
+  #     -
+  #       run: npm install -g snyk-to-html
+  #     -
+  #       run: cat oss-results.json | snyk-to-html > oss-results.html        
+  #     - 
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: oss-results
+  #         path: oss-results.html
+  
+  # code-assessment:
+  #   needs: oss-assessment
+  #   permissions: write-all
+  #   name: SAST Assessment
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - 
+  #       uses: actions/checkout@v4
+  #     -
+  #       uses: snyk/actions/setup@master
+  #     - 
+  #       name: Run Snyk to check for Static Application Security Testing Findings
+  #       continue-on-error: true
+  #       run: snyk code test --org=$SNYK_ORG_ID -json-file-output=code-results.json
+  #     - 
+  #       uses: actions/setup-node@v4
+  #     -
+  #       run: npm install -g snyk-to-html
+  #     -
+  #       run: cat code-results.json | snyk-to-html > code-results.html        
+  #     - 
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: code-results
+  #         path: code-results.html
+      
+  # container-assessment:
+  #   needs: code-assessment
+  #   permissions: write-all
+  #   name: Container Assessment
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - 
+  #       uses: actions/checkout@v4
+  #     - 
+  #       name: Build the container image
+  #       run: docker build -t raphabot/juice-shop:test .
+  #     - 
+  #       name: Run Snyk to check container image for vulnerabilities
+  #       continue-on-error: true
+  #       uses: snyk/actions/docker@master
+  #       with:
+  #         image: raphabot/juice-shop:test
+  #         args: --file=Dockerfile --org=$SNYK_ORG_ID --json-file-output=container-results.json
+  #     - 
+  #       uses: actions/setup-node@v4
+  #     -
+  #       run: npm install -g snyk-to-html
+  #     -
+  #       run: cat container-results.json | snyk-to-html > container-results.html        
+  #     - 
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: container-results
+  #         path: container-results.html
+ 
+  # kubernetes-artifact-assessment:
+  #   needs: container-assessment
+  #   permissions: write-all
+  #   name: Kubernetes Artifact Assessment
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - 
+  #       uses: actions/checkout@v4
+      
+  #     - 
+  #       name: Run Snyk to check Kubernetes Artificat misconfigurations
+  #       continue-on-error: true
+  #       uses: snyk/actions/iac@master 
+  #       with:
+  #         args: ./k8s-src --org=$SNYK_ORG_ID --json-file-output=k8s-results.json
+  #     - 
+  #       uses: actions/setup-node@v4
+  #     -
+  #       run: npm install -g snyk-to-html
+  #     -
+  #       run: cat k8s-results.json | snyk-to-html > k8s-results.html        
+  #     - 
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: k8s-results
+  #         path: k8s-results.html
+  
+  # terraform-assessment:
+  #   needs: kubernetes-artifact-assessment
+  #   permissions: write-all
+  #   name: Terraform Assessment
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - 
+  #       uses: actions/checkout@v4
+  #     - 
+  #       uses: hashicorp/setup-terraform@v2
+  #     - 
+  #       run: terraform init
+  #     - 
+  #       name: Run Snyk to check AWS misconfigurations in Terraform IaC
+  #       continue-on-error: true
+  #       uses: snyk/actions/iac@master 
+  #       with:
+  #         args: --org=$SNYK_ORG_ID --json-file-output=terraform-results.json
+  #     - 
+  #       uses: actions/setup-node@v4
+  #     -
+  #       run: npm install -g snyk-to-html
+  #     -
+  #       run: cat terraform-results.json | snyk-to-html > terraform-results.html        
+  #     - 
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: terraform-results
+  #         path: terraform-results.html
