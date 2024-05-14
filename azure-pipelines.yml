@@ -10,14 +10,12 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: NodeTool@0
+- task: SnykSecurityScan@1
   inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
-
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
-
-
+    serviceConnectionEndpoint: 'Snyk-US'
+    testType: 'code'
+    codeSeverityThreshold: 'high'
+    failOnIssues: true
+    projectName: 'juice-shop/juice-shop'
+    organization: 'suganthi-demo'
+ 
