@@ -1,0 +1,8 @@
+name: run-javascript-tests
+run-name: Run JS tests
+on: [push]
+jobs:
+  build-js:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello"
