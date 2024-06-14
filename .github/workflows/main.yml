@@ -31,7 +31,7 @@ jobs:
       - name: Checkout
         uses: b4den/comment-pr-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
       - uses: actions/checkout@v4
       - uses: actions/github-script@v6
         with:
