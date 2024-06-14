@@ -14,8 +14,25 @@ jobs:
       id-token: write
 
     steps:
+      - name: Run Snyk IaC test
+        uses: snyk/actions/iac@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        continue-on-error: true
+        with:
+          args: --severity-threshold=medium --sarif
+
+      - name: Parse Results
+        id: snyk_results
+        uses: snyk-schmidtty/snyk-to-markdown-action@master
+        with:
+          file-name: snyk.sarif
+          
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: b4den/comment-pr-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v4
       - uses: actions/github-script@v6
         with:
           script: |
@@ -23,5 +40,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: ':wave: Thanks for reporting!'
+              body: "${{ steps.snyk_results.outputs.vuln_text }}"
             })
