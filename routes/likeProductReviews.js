@@ -9,7 +9,7 @@ const db = require('../data/mongodb')
 const insecurity = require('../lib/insecurity')
 
 module.exports = function productReviews () {
-  return (req, res, next) => {
+  return ({req, res, next}) => {
     const id = req.body.id
     const user = insecurity.authenticatedUsers.from(req)
     db.reviews.findOne({ _id: id }).then(review => {
